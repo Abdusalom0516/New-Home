@@ -1,1 +1,3 @@
-class ConstFontNames {}
+class ConstFontNames {
+  static const String urbanist = "Urbanist";
+}
