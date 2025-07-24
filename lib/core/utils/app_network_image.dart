@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
+import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 
 class AppNetworkImage extends StatelessWidget {
   final double? height;
@@ -31,13 +31,13 @@ class AppNetworkImage extends StatelessWidget {
         placeholder: (context, url) => CustomLoading(),
         errorWidget: (a, b, c) => Container(
           decoration: BoxDecoration(
-            color: colors.ff7D7B7B,
+            color: colors.ff16A99F,
             borderRadius: BorderRadius.circular(radius ?? 0.0),
             image: const DecorationImage(
               image: AssetImage("assets/images/logo.png"),
               fit: BoxFit.cover,
             ),
-            border: Border.all(color: colors.ff7D7B7B),
+            border: Border.all(color: colors.ff16A99F),
           ),
           child: child,
         ),
