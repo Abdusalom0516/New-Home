@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:small_kindness/core/consts/const_colors.dart';
+import 'package:small_kindness/core/utils/app_router.dart';
 import 'package:small_kindness/features/main/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -15,6 +19,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MainScreen());
+    return MultiBlocProvider(
+      providers: [],
+
+      child: ScreenUtilInit(
+        designSize: Size(393, 852),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => MaterialApp(
+          theme: Theme.of(context).copyWith(
+            appBarTheme: AppBarTheme(iconTheme: IconThemeData(size: 24.w)),
+            splashColor: Colors.transparent,
+            // It remove the unecessary borders
+            dividerColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            scaffoldBackgroundColor: ConstColors().ffFFFFFF,
+          ),
+          navigatorKey: AppRouter.navigatorKey,
+          debugShowCheckedModeBanner: false,
+          home: MainScreen(),
+        ),
+      ),
+    );
   }
 }
