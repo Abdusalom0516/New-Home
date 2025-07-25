@@ -7,4 +7,5 @@ class ConstIconsPaths {
   static const String notification = 'assets/icons/notifications_off.svg';
   static const String paw = 'assets/icons/paw.svg';
   static const String chat = 'assets/icons/chat.svg';
+  static const String article = 'assets/icons/newspaper.svg';
 }

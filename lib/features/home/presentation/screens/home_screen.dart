@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +9,8 @@ import 'package:small_kindness/core/consts/const_texts.dart';
 import 'package:small_kindness/core/utils/app_network_image.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 import 'package:small_kindness/core/widgets/custom_sliver_height_wd.dart';
+import 'package:small_kindness/features/home/presentation/widgets/home_screen_card_wd.dart';
+import 'package:small_kindness/features/home/presentation/widgets/near_you_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,120 +26,221 @@ class HomeScreen extends StatelessWidget {
             topTextsSection(texts, colors),
             SliverHeight(height: 25),
             // Cards Section
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 25.r),
-              sliver: SliverToBoxAdapter(
-                child: Row(
-                  spacing: 8.w,
-                  children: [
-                    HomeScreenCard(
-                      iconPath: ConstIconsPaths.paw,
-                      title: texts.adotAPet,
-                      content: texts.browseAnimals,
-                    ),
-                    HomeScreenCard(
-                      iconPath: ConstIconsPaths.search,
-                      title: texts.lostAndFound,
-                      content: texts.reportLostOrFoundAnimal,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            cardsSection(texts, colors),
             SliverHeight(height: 10),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 25.r),
-              sliver: SliverToBoxAdapter(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      texts.nearYou,
-                      style: AppTextStyles.urbanist.medium(
-                        color: colors.ff000000,
-                        fontSize: 17.sp,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        log("See all clicked");
-                      },
-                      child: Text(
-                        texts.seeAll,
-                        style: AppTextStyles.urbanist.medium(
-                          color: colors.ff000000,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            // Near You Title Section
+            titleSection(
+              colors: colors,
+              texts: texts,
+              title: texts.nearYou,
+              func: () {
+                log("See all clicked");
+              },
+            ),
+            // Near You Cards Section
+            nearYouCardsSection(colors),
+            SliverHeight(height: 10),
+            // Near You Title Section
+            titleSection(
+              colors: colors,
+              texts: texts,
+              title: texts.exploreWaysToHelp,
+              func: () {
+                log("See all clicked");
+              },
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 200.h,
+                height: 133.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 11,
+                  itemCount: 6,
                   itemBuilder: (context, index) => Container(
                     margin: index == 0
-                        ? EdgeInsets.only(right: 15.w, left: 25.w)
-                        : index == 10
-                        ? EdgeInsets.only(right: 25.w)
-                        : EdgeInsets.only(right: 15.w),
-                    padding: EdgeInsets.all(8.r),
+                        ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
+                        : index == 5
+                        ? EdgeInsets.only(right: 16.w, bottom: 10.h)
+                        : EdgeInsets.only(right: 15.w, bottom: 10.h),
+                    height: 133.h,
                     width: 154.w,
-                    height: 200.h,
                     decoration: BoxDecoration(
                       color: colors.ffFFFFFF,
-                      borderRadius: BorderRadius.circular(5.25.r),
-                      border: Border.all(color: colors.ff16A99F, width: 1.w),
+                      borderRadius: BorderRadius.circular(9.25.r),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       spacing: 2.5.r,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
                       children: [
                         Expanded(
-                          flex: 5,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5.25.r),
                             child: AppNetworkImage(
                               height: 116.h,
                               width: double.infinity,
                               imageUrl:
-                                  "https://i.pinimg.com/736x/86/dd/3c/86dd3ced184db0b1b4b1a7a21cb111eb.jpg",
+                                  "https://i.pinimg.com/1200x/29/3d/32/293d32bf6faeec6bf8718eb647a0d59a.jpg",
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                overflow: TextOverflow.ellipsis,
-                                "Jodo",
-                                style: AppTextStyles.urbanist.bold(
-                                  color: colors.ff000000,
-                                  fontSize: 17.sp,
-                                ),
-                              ),
-                              Text(
-                                overflow: TextOverflow.ellipsis,
-                                "Golden Retriever",
-                                style: AppTextStyles.urbanist.regular(
-                                  color: colors.ff000000,
-                                  fontSize: 15.sp,
-                                ),
-                              ),
-                            ],
+                        Text(
+                          overflow: TextOverflow.ellipsis,
+                          "Volunteers",
+                          style: AppTextStyles.urbanist.regular(
+                            color: colors.ff000000,
+                            fontSize: 15.sp,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
+              ),
+            ),
+            SliverHeight(height: 35),
+          ],
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter nearYouCardsSection(ConstColors colors) {
+    List<String> images = [
+      "https://i.pinimg.com/1200x/29/3d/32/293d32bf6faeec6bf8718eb647a0d59a.jpg",
+      "https://i.pinimg.com/1200x/37/92/08/379208d226aaa1763b88bb749b3a93af.jpg",
+      "https://i.pinimg.com/736x/25/93/34/25933494ecb1254043e7db38bb73f8f8.jpg",
+      "https://i.pinimg.com/736x/fd/a9/fa/fda9fa420d2748496221e9f8c1f2f112.jpg",
+      "https://i.pinimg.com/736x/86/dd/3c/86dd3ced184db0b1b4b1a7a21cb111eb.jpg",
+    ];
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 210.h,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: images.length,
+          itemBuilder: (context, index) =>
+              NearYouCard(imagesList: images, index: index),
+        ),
+      ),
+    );
+  }
+
+  SliverPadding titleSection({
+    required String title,
+    required ConstColors colors,
+    required ConstTexts texts,
+    required VoidCallback func,
+  }) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 25.r),
+      sliver: SliverToBoxAdapter(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: AppTextStyles.urbanist.medium(
+                color: colors.ff000000,
+                fontSize: 17.sp,
+              ),
+            ),
+            TextButton(
+              onPressed: func,
+              child: Text(
+                texts.seeAll,
+                style: AppTextStyles.urbanist.medium(
+                  color: colors.ff000000,
+                  fontSize: 14.sp,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  SliverPadding cardsSection(ConstTexts texts, ConstColors colors) {
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 16.r),
+      sliver: SliverToBoxAdapter(
+        child: Column(
+          spacing: 8.h,
+          children: [
+            Row(
+              spacing: 8.w,
+              children: [
+                HomeScreenCard(
+                  iconPath: ConstIconsPaths.paw,
+                  title: texts.adotAPet,
+                  content: texts.browseAnimals,
+                ),
+                HomeScreenCard(
+                  iconPath: ConstIconsPaths.search,
+                  title: texts.lostAndFound,
+                  content: texts.reportLostOrFoundAnimal,
+                ),
+              ],
+            ),
+            Container(
+              height: 90.h,
+              width: double.infinity,
+              padding: EdgeInsets.all(8.r),
+              decoration: BoxDecoration(
+                color: colors.ffE8F7F6,
+                borderRadius: BorderRadius.circular(5.25.r),
+              ),
+              child: Row(
+                spacing: 12.w,
+                children: [
+                  Container(
+                    height: 50.h,
+                    width: 50.w,
+                    padding: EdgeInsets.all(9.r),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.25.r),
+                      color: colors.ff16A99F,
+                    ),
+                    child: SvgPicture.asset(
+                      ConstIconsPaths.article,
+                      height: 25.h,
+                      width: 25.w,
+                      fit: BoxFit.contain,
+                      colorFilter: ColorFilter.mode(
+                        colors.ffFFFFFF,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      spacing: 2.h,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          texts.articles,
+                          style: AppTextStyles.urbanist.medium(
+                            color: colors.ff000000,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                        Text(
+                          texts.stayUpdated,
+                          style: AppTextStyles.urbanist.regular(
+                            color: colors.ff000000,
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: colors.ff000000,
+                    size: 18.r,
+                  ),
+                ],
               ),
             ),
           ],
@@ -149,7 +251,7 @@ class HomeScreen extends StatelessWidget {
 
   SliverPadding topTextsSection(ConstTexts texts, ConstColors colors) {
     return SliverPadding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 25.r),
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
       sliver: SliverToBoxAdapter(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -187,77 +289,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class HomeScreenCard extends StatelessWidget {
-  const HomeScreenCard({
-    super.key,
-    required this.iconPath,
-    required this.title,
-    required this.content,
-  });
-  final String iconPath, title, content;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: AppStateWrapper(
-        builder: (colors, texts, images) => Container(
-          height: 152.h,
-          padding: EdgeInsets.all(8.r),
-          decoration: BoxDecoration(
-            color: colors.ffE8F7F6,
-            borderRadius: BorderRadius.circular(3.r),
-          ),
-          child: Column(
-            spacing: 12.h,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 50.h,
-                width: 50.w,
-                padding: EdgeInsets.all(9.r),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3.r),
-                  color: colors.ff16A99F,
-                ),
-                child: SvgPicture.asset(
-                  iconPath,
-                  height: 25.h,
-                  width: 25.w,
-                  fit: BoxFit.contain,
-                  colorFilter: ColorFilter.mode(
-                    colors.ffFFFFFF,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
-              Column(
-                spacing: 5.h,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: AppTextStyles.urbanist.medium(
-                      color: colors.ff000000,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                  Text(
-                    content,
-                    style: AppTextStyles.urbanist.regular(
-                      color: colors.ff000000,
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
         ),
       ),
     );

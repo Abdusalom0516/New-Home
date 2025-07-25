@@ -59,4 +59,6 @@ class ConstTexts {
   String back = "Back";
   String reportLostOrFoundAnimal = "Report a lost pet or a found animal.";
   String nearYou = "Near You";
+  String stayUpdated =
+      "Stay Updated: Your Source for the Latest Articles and Updates";
 }
