@@ -24,7 +24,12 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
         theme: Theme.of(context).copyWith(
-          appBarTheme: AppBarTheme(iconTheme: IconThemeData(size: 24.w)),
+          appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(size: 24.w),
+            elevation: 2.5.r,
+            scrolledUnderElevation: 0,
+            backgroundColor: ConstColors().ffFFFFFF,
+          ),
           splashColor: Colors.transparent,
           // It remove the unecessary borders
           dividerColor: Colors.transparent,

@@ -21,10 +21,9 @@ class HomeScreen extends StatelessWidget {
       builder: (colors, texts, images) => Scaffold(
         body: CustomScrollView(
           slivers: [
-            SliverHeight(height: 65),
             // Top Texts Section
-            topTextsSection(texts, colors),
-            SliverHeight(height: 25),
+            appBarSection(texts, colors),
+            SliverHeight(height: 15),
             // Cards Section
             cardsSection(texts, colors),
             SliverHeight(height: 10),
@@ -51,7 +50,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 133.h,
+                height: 165.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 6,
@@ -61,8 +60,8 @@ class HomeScreen extends StatelessWidget {
                         : index == 5
                         ? EdgeInsets.only(right: 16.w, bottom: 10.h)
                         : EdgeInsets.only(right: 15.w, bottom: 10.h),
-                    height: 133.h,
-                    width: 154.w,
+                    height: 165.h,
+                    width: 194.w,
                     decoration: BoxDecoration(
                       color: colors.ffFFFFFF,
                       borderRadius: BorderRadius.circular(9.25.r),
@@ -88,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                           "Volunteers",
                           style: AppTextStyles.urbanist.regular(
                             color: colors.ff000000,
-                            fontSize: 15.sp,
+                            fontSize: 17.sp,
                           ),
                         ),
                       ],
@@ -97,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 35),
+            SliverHeight(height: 45),
           ],
         ),
       ),
@@ -132,7 +131,7 @@ class HomeScreen extends StatelessWidget {
     required VoidCallback func,
   }) {
     return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: 25.r),
+      padding: EdgeInsets.symmetric(horizontal: 16.r),
       sliver: SliverToBoxAdapter(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,7 +159,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  SliverPadding cardsSection(ConstTexts texts, ConstColors colors) {
+  Widget cardsSection(ConstTexts texts, ConstColors colors) {
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: 16.r),
       sliver: SliverToBoxAdapter(
@@ -249,48 +248,51 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  SliverPadding topTextsSection(ConstTexts texts, ConstColors colors) {
-    return SliverPadding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
-      sliver: SliverToBoxAdapter(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  texts.helloName,
-                  style: AppTextStyles.urbanist.regular(
-                    color: colors.ff000000,
-                    fontSize: 18.sp,
-                  ),
+  Widget appBarSection(ConstTexts texts, ConstColors colors) {
+    return SliverAppBar(
+      toolbarHeight: 70.h,
+      pinned: true,
+      floating: true,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                texts.helloName,
+                style: AppTextStyles.urbanist.regular(
+                  color: colors.ff000000,
+                  fontSize: 18.sp,
                 ),
-                Text(
-                  texts.readyToRescue,
-                  style: AppTextStyles.urbanist.semiBold(
-                    color: colors.ff000000,
-                    fontSize: 22.sp,
-                  ),
+              ),
+              Text(
+                texts.readyToRescue,
+                style: AppTextStyles.urbanist.semiBold(
+                  color: colors.ff000000,
+                  fontSize: 22.sp,
                 ),
-              ],
-            ),
-            Container(
-              height: 45.h,
-              width: 45.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: colors.ffE8F7F6,
               ),
-              child: Icon(
-                Icons.notifications_outlined,
-                color: colors.ff000000,
-                size: 25.r,
-              ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
+      actions: [
+        Container(
+          height: 45.h,
+          width: 45.w,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: colors.ffE8F7F6,
+          ),
+          child: Icon(
+            Icons.notifications_outlined,
+            color: colors.ff000000,
+            size: 25.r,
+          ),
+        ),
+        SizedBox(width: 16.w),
+      ],
     );
   }
 }
