@@ -57,4 +57,6 @@ class ConstTexts {
   String userPref = "User Preferences!";
   String next = "Next";
   String back = "Back";
+  String reportLostOrFoundAnimal = "Report a lost pet or a found animal.";
+  String nearYou = "Near You";
 }
