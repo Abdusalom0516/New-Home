@@ -61,4 +61,5 @@ class ConstTexts {
   String nearYou = "Near You";
   String stayUpdated =
       "Stay Updated: Your Source for the Latest Articles and Updates";
+  String about = "About Us";
 }

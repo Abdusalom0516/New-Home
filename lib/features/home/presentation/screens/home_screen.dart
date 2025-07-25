@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             // Near You Cards Section
             nearYouCardsSection(colors),
             SliverHeight(height: 10),
-            // Near You Title Section
+            // Explore Ways to Help Title Section
             titleSection(
               colors: colors,
               texts: texts,
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 165.h,
+                height: 195.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 6,
@@ -60,8 +60,8 @@ class HomeScreen extends StatelessWidget {
                         : index == 5
                         ? EdgeInsets.only(right: 16.w, bottom: 10.h)
                         : EdgeInsets.only(right: 15.w, bottom: 10.h),
-                    height: 165.h,
-                    width: 194.w,
+                    height: 195.h,
+                    width: 234.w,
                     decoration: BoxDecoration(
                       color: colors.ffFFFFFF,
                       borderRadius: BorderRadius.circular(9.25.r),
@@ -92,6 +92,30 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 10),
+            // About Title Section
+            titleSection(
+              colors: colors,
+              texts: texts,
+              title: texts.about,
+              func: () {
+                log("See all clicked");
+              },
+            ),
+            // About Section
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  textAlign: TextAlign.justify,
+                  "New Home is a platform dedicated to connecting people with pets in need of homes. Our mission is to promote animal welfare and encourage responsible pet ownership through education, community engagement, and support for local shelters and rescue organizations.",
+                  style: AppTextStyles.urbanist.regular(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
                   ),
                 ),
               ),
