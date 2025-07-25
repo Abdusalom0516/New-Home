@@ -27,7 +27,7 @@ class AppNetworkImage extends StatelessWidget {
         width: width,
         imageUrl: imageUrl,
         imageBuilder: (context, image) {
-          return Image(image: image, fit: BoxFit.contain);
+          return Image(image: image, fit: BoxFit.cover);
         },
         placeholder: (context, url) => CustomLoading(),
         errorWidget: (a, b, c) => Container(

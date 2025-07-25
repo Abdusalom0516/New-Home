@@ -1,7 +1,7 @@
 name: small_kindness
 description: "A new Flutter project."
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -27,6 +27,7 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.7
   cached_network_image: ^3.4.1
+  flutter_svg: ^2.2.0
 
 
 dev_dependencies:
@@ -51,6 +52,10 @@ flutter:
           weight: 500
         - asset: assets/fonts/Urbanist-SemiBold.ttf
           weight: 600
-  #
+
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
