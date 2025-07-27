@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
+import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
 
-class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
+class PetsScreen extends StatelessWidget {
+  const PetsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +12,12 @@ class FavoritesScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              title: Text(texts.favorites),
+              title: Text(texts.pets),
               pinned: true,
               floating: true,
               snap: true,
             ),
+            ComingSoonWidget(),
           ],
         ),
       ),

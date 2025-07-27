@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:small_kindness/core/consts/const_icons_paths.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
-import 'package:small_kindness/features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:small_kindness/features/pets/presentation/screens/pets_screen.dart';
 import 'package:small_kindness/features/home/presentation/screens/home_screen.dart';
 
 class MainScreen extends HookWidget {
@@ -22,11 +22,10 @@ class MainScreen extends HookWidget {
             pageController.jumpToPage(value);
           },
           currentIndex: currentIndex.value,
-          backgroundColor: colors.ffF6F6F6,
+          backgroundColor: colors.ffE8F7F6,
           showUnselectedLabels: false,
           showSelectedLabels: false,
           type: BottomNavigationBarType.fixed,
-
           items: [
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -45,33 +44,31 @@ class MainScreen extends HookWidget {
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                ConstIconsPaths.favorite,
+                ConstIconsPaths.paw,
                 height: 27.r,
                 width: 27.r,
                 colorFilter: ColorFilter.mode(colors.ff000000, BlendMode.srcIn),
               ),
               activeIcon: SvgPicture.asset(
-                ConstIconsPaths.favoriteFill,
+                ConstIconsPaths.paw,
                 height: 27.r,
                 width: 27.r,
                 colorFilter: ColorFilter.mode(colors.ff16A99F, BlendMode.srcIn),
               ),
-              label: 'Favorites',
+              label: 'Pets',
             ),
             BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                ConstIconsPaths.chat,
-                height: 22.r,
-                width: 22.r,
-                colorFilter: ColorFilter.mode(colors.ff000000, BlendMode.srcIn),
+              icon: Icon(
+                Icons.newspaper_rounded,
+                color: colors.ff000000,
+                size: 25.r,
               ),
-              activeIcon: SvgPicture.asset(
-                ConstIconsPaths.chatFill,
-                height: 27.r,
-                width: 27.r,
-                colorFilter: ColorFilter.mode(colors.ff16A99F, BlendMode.srcIn),
+              activeIcon: Icon(
+                Icons.newspaper_rounded,
+                color: colors.ff16A99F,
+                size: 25.r,
               ),
-              label: 'Chat',
+              label: 'Articles',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -93,12 +90,7 @@ class MainScreen extends HookWidget {
         body: PageView(
           controller: pageController,
           physics: NeverScrollableScrollPhysics(),
-          children: [
-            HomeScreen(),
-            FavoritesScreen(),
-            HomeScreen(),
-            HomeScreen(),
-          ],
+          children: [HomeScreen(), PetsScreen(), HomeScreen(), HomeScreen()],
         ),
       ),
     );
