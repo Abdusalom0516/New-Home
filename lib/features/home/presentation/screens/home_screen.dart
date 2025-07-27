@@ -48,54 +48,8 @@ class HomeScreen extends StatelessWidget {
                 log("See all clicked");
               },
             ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 195.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 6,
-                  itemBuilder: (context, index) => Container(
-                    margin: index == 0
-                        ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
-                        : index == 5
-                        ? EdgeInsets.only(right: 16.w, bottom: 10.h)
-                        : EdgeInsets.only(right: 15.w, bottom: 10.h),
-                    height: 195.h,
-                    width: 234.w,
-                    decoration: BoxDecoration(
-                      color: colors.ffFFFFFF,
-                      borderRadius: BorderRadius.circular(9.25.r),
-                    ),
-                    child: Column(
-                      spacing: 2.5.r,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5.25.r),
-                            child: AppNetworkImage(
-                              height: 116.h,
-                              width: double.infinity,
-                              imageUrl:
-                                  "https://i.pinimg.com/1200x/29/3d/32/293d32bf6faeec6bf8718eb647a0d59a.jpg",
-                            ),
-                          ),
-                        ),
-                        Text(
-                          overflow: TextOverflow.ellipsis,
-                          "Volunteers",
-                          style: AppTextStyles.urbanist.regular(
-                            color: colors.ff000000,
-                            fontSize: 17.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // Explore Ways to Help Section
+            exploreWaysToHelpSection(colors),
             SliverHeight(height: 10),
             // About Title Section
             titleSection(
@@ -125,6 +79,56 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  SliverToBoxAdapter exploreWaysToHelpSection(ConstColors colors) {
+    return SliverToBoxAdapter(
+            child: SizedBox(
+              height: 195.h,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 6,
+                itemBuilder: (context, index) => Container(
+                  margin: index == 0
+                      ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
+                      : index == 5
+                      ? EdgeInsets.only(right: 16.w, bottom: 10.h)
+                      : EdgeInsets.only(right: 15.w, bottom: 10.h),
+                  height: 195.h,
+                  width: 234.w,
+                  decoration: BoxDecoration(
+                    color: colors.ffFFFFFF,
+                    borderRadius: BorderRadius.circular(9.25.r),
+                  ),
+                  child: Column(
+                    spacing: 5.5.h,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5.25.r),
+                          child: AppNetworkImage(
+                            height: 116.h,
+                            width: double.infinity,
+                            imageUrl:
+                                "https://i.pinimg.com/1200x/29/3d/32/293d32bf6faeec6bf8718eb647a0d59a.jpg",
+                          ),
+                        ),
+                      ),
+                      Text(
+                        overflow: TextOverflow.ellipsis,
+                        "Volunteers",
+                        style: AppTextStyles.urbanist.regular(
+                          color: colors.ff000000,
+                          fontSize: 17.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
   }
 
   SliverToBoxAdapter nearYouCardsSection(ConstColors colors) {
@@ -188,10 +192,10 @@ class HomeScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.r),
       sliver: SliverToBoxAdapter(
         child: Column(
-          spacing: 8.h,
+          spacing: 15.h,
           children: [
             Row(
-              spacing: 8.w,
+              spacing: 15.w,
               children: [
                 HomeScreenCard(
                   iconPath: ConstIconsPaths.paw,
