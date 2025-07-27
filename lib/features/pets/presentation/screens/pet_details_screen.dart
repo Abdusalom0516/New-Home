@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:small_kindness/core/consts/const_text_styles.dart';
 import 'package:small_kindness/core/utils/app_network_image.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
+import 'package:small_kindness/core/widgets/custom_sliver_height_wd.dart';
 
 class PetDetailsScreen extends HookWidget {
   const PetDetailsScreen({super.key});
@@ -20,18 +24,199 @@ class PetDetailsScreen extends HookWidget {
               floating: true,
               snap: true,
             ),
-            SliverToBoxAdapter(
-              child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(8.r),
-                child: AppNetworkImage(
-                  imageUrl:
-                      "https://i.pinimg.com/1200x/d7/db/61/d7db619673b9d96aeaced7d4624c48c1.jpg",
-                  height: 218.h,
-                  width: double.infinity,
+            SliverHeight(height: 16),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.w),
+              sliver: SliverToBoxAdapter(
+                child: ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(8.r),
+                  child: AppNetworkImage(
+                    imageUrl:
+                        "https://i.pinimg.com/1200x/d7/db/61/d7db619673b9d96aeaced7d4624c48c1.jpg",
+                    height: 218.h,
+                    width: double.infinity,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 16),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.w),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  "Dexter",
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 21.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 16),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.w),
+              sliver: SliverToBoxAdapter(
+                child: Row(
+                  spacing: 10.w,
+                  children: [
+                    PetDetailsCard(title: texts.gender, content: "Male"),
+                    PetDetailsCard(title: texts.age, content: "3"),
+                    PetDetailsCard(title: texts.size, content: "Medium"),
+                  ],
+                ),
+              ),
+            ),
+            SliverHeight(height: 16),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Container(
+                  padding: EdgeInsets.all(11.r),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(color: colors.ffC6C6C6, width: 1.r),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        spacing: 11.w,
+                        children: [
+                          Container(
+                            height: 47.h,
+                            width: 47.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: colors.ffE8F7F6,
+                            ),
+                            child: Icon(
+                              Icons.person_rounded,
+                              color: colors.ff000000,
+                              size: 24.r,
+                            ),
+                          ),
+                          Column(
+                            spacing: 3.h,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "James Parlor",
+                                style: AppTextStyles.urbanist.semiBold(
+                                  color: colors.ff000000,
+                                  fontSize: 16.sp,
+                                ),
+                              ),
+                              Text(
+                                "Pet Owner",
+                                style: AppTextStyles.urbanist.regular(
+                                  color: colors.ff000000,
+                                  fontSize: 16.sp,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        spacing: 6.w,
+                        children: [
+                          IconButton(
+                            style: ButtonStyle(
+                              padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                            ),
+                            onPressed: () {
+                              log("Phone Circle Clicked.");
+                            },
+                            icon: Container(
+                              padding: EdgeInsets.all(9.r),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: colors.ffC6C6C6,
+                                  width: 1.r,
+                                ),
+                              ),
+                              child: Icon(
+                                Icons.phone_rounded,
+                                color: colors.ff000000,
+                                size: 19.r,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            style: ButtonStyle(
+                              padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                            ),
+                            onPressed: () {
+                              log("Phone Circle Clicked.");
+                            },
+                            icon: Container(
+                              padding: EdgeInsets.all(9.r),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: colors.ffC6C6C6,
+                                  width: 1.r,
+                                ),
+                              ),
+                              child: Icon(
+                                Icons.message_outlined,
+                                color: colors.ff000000,
+                                size: 19.r,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class PetDetailsCard extends StatelessWidget {
+  const PetDetailsCard({super.key, required this.content, required this.title});
+  final String title, content;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: AppStateWrapper(
+        builder: (colors, texts, images) => Container(
+          padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 11.r),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            color: colors.ffE8F7F6,
+          ),
+          child: Column(
+            spacing: 5.h,
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Text(
+                overflow: TextOverflow.ellipsis,
+                title,
+                style: AppTextStyles.urbanist.regular(
+                  color: colors.ff000000,
+                  fontSize: 16.sp,
+                ),
+              ),
+              Text(
+                overflow: TextOverflow.ellipsis,
+                content,
+                style: AppTextStyles.urbanist.semiBold(
+                  color: colors.ff000000,
+                  fontSize: 16.sp,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
