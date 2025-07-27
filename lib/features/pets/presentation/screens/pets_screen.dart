@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:small_kindness/core/consts/const_colors.dart';
+import 'package:small_kindness/core/consts/const_text_styles.dart';
 import 'package:small_kindness/core/consts/const_texts.dart';
+import 'package:small_kindness/core/utils/app_network_image.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
-import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
 import 'package:small_kindness/core/widgets/custom_sliver_height_wd.dart';
 import 'package:small_kindness/features/pets/presentation/widgets/category_card.dart';
 
@@ -19,26 +20,132 @@ class PetsScreen extends HookWidget {
         body: CustomScrollView(
           slivers: [
             // AppBar Section
-            appBarSection(texts),
-            // Categories Section
-            categoriesSection(colors, currentCategoryIndex),
-            CustomComingSoonWidget(),
-            SliverHeight(height: 15),
-            SliverPadding(padding: EdgeInsets.symmetric(horizontal: 16.r)),
+            appBarSection(
+              colors: colors,
+              texts: texts,
+              currentCategoryIndex: currentCategoryIndex,
+            ),
+            SliverHeight(height: 5),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16.r),
+              sliver: SliverList.builder(
+                itemCount: 11,
+                itemBuilder: (context, index) => Container(
+                  height: 264.h,
+                  width: double.infinity,
+                  padding: EdgeInsets.all(10.r),
+                  margin: EdgeInsets.only(bottom: 16.r),
+                  decoration: BoxDecoration(
+                    color: colors.transparent,
+                    borderRadius: BorderRadius.circular(8.r),
+                    border: Border.all(color: colors.ffE0E0E0, width: 1.r),
+                  ),
+                  child: Column(
+                    spacing: 5.h,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.r),
+                          child: AppNetworkImage(
+                            height: 125.h,
+                            width: double.infinity,
+                            imageUrl:
+                                "https://i.pinimg.com/1200x/b1/39/70/b13970942aa917c97d358ef6582067b6.jpg",
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              overflow: TextOverflow.ellipsis,
+                              "Puppies",
+                              style: AppTextStyles.urbanist.semiBold(
+                                color: colors.ff000000,
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                            Text(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              "Found hiding under a car in the parking lot of Smith's Grocery Store",
+                              style: AppTextStyles.urbanist.medium(
+                                color: colors.ff000000,
+                                fontSize: 14.sp,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_pin,
+                                  color: colors.ff000000,
+                                  size: 17.r,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
+                                    " Found on May 26, 2024, at 10:00 AM",
+                                    style: AppTextStyles.urbanist.medium(
+                                      color: colors.ff000000,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              spacing: 9.w,
+                              children: [
+                                Icon(
+                                  Icons.phone_rounded,
+                                  color: colors.ff000000,
+                                  size: 17.r,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
+                                    "Contact: 555-987-6543 to claim",
+                                    style: AppTextStyles.urbanist.medium(
+                                      color: colors.ff000000,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  SliverPadding categoriesSection(
-    ConstColors colors,
-    ValueNotifier<int> currentCategoryIndex,
-  ) {
-    return SliverPadding(
-      padding: EdgeInsets.all(16.r),
-      sliver: SliverToBoxAdapter(
+  SliverAppBar appBarSection({
+    required ConstColors colors,
+    required ConstTexts texts,
+    required ValueNotifier<int> currentCategoryIndex,
+  }) {
+    return SliverAppBar(
+      title: Text(texts.pets),
+      pinned: true,
+      floating: true,
+      snap: true,
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(78.h),
         child: Container(
+          margin: EdgeInsets.all(16.r),
           decoration: BoxDecoration(
             color: colors.ffE8F7F6,
             borderRadius: BorderRadius.circular(8.r),
@@ -48,7 +155,7 @@ class PetsScreen extends HookWidget {
             children: [
               CategoryCard(
                 isSelected: currentCategoryIndex.value == 0,
-                categoryName: "Adopt",
+                categoryName: "Found",
                 func: () {
                   currentCategoryIndex.value = 0;
                 },
@@ -62,7 +169,7 @@ class PetsScreen extends HookWidget {
               ),
               CategoryCard(
                 isSelected: currentCategoryIndex.value == 2,
-                categoryName: "Found",
+                categoryName: "Adopt",
                 func: () {
                   currentCategoryIndex.value = 2;
                 },
@@ -71,15 +178,6 @@ class PetsScreen extends HookWidget {
           ),
         ),
       ),
-    );
-  }
-
-  SliverAppBar appBarSection(ConstTexts texts) {
-    return SliverAppBar(
-      title: Text(texts.pets),
-      pinned: true,
-      floating: true,
-      snap: true,
     );
   }
 }
