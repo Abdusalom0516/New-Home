@@ -19,10 +19,10 @@ class NearYouCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(9.25.r),
         ),
         margin: index == 0
-            ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
+            ? EdgeInsets.only(right: 15.r, left: 16.r, bottom: 10.r)
             : index == (imagesList.length - 1)
-            ? EdgeInsets.only(right: 16.w, bottom: 10.h)
-            : EdgeInsets.only(right: 15.w, bottom: 10.h),
+            ? EdgeInsets.only(right: 16.r, bottom: 10.r)
+            : EdgeInsets.only(right: 15.r, bottom: 10.r),
         child: Container(
           padding: EdgeInsets.all(8.r),
           width: 154.w,

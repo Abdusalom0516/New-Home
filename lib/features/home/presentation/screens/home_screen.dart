@@ -90,10 +90,10 @@ class HomeScreen extends StatelessWidget {
                 itemCount: 6,
                 itemBuilder: (context, index) => Container(
                   margin: index == 0
-                      ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
+                      ? EdgeInsets.only(right: 15.r, left: 16.r, bottom: 10.r)
                       : index == 5
-                      ? EdgeInsets.only(right: 16.w, bottom: 10.h)
-                      : EdgeInsets.only(right: 15.w, bottom: 10.h),
+                      ? EdgeInsets.only(right: 16.r, bottom: 10.r)
+                      : EdgeInsets.only(right: 15.r, bottom: 10.r),
                   height: 195.h,
                   width: 234.w,
                   decoration: BoxDecoration(
