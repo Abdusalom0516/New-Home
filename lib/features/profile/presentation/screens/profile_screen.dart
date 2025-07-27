@@ -3,8 +3,8 @@ import 'package:small_kindness/core/consts/const_texts.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
 
-class LostAndFoundAddScreen extends StatelessWidget {
-  const LostAndFoundAddScreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +23,10 @@ class LostAndFoundAddScreen extends StatelessWidget {
 
   SliverAppBar appBarSection(ConstTexts texts) {
     return SliverAppBar(
-            title: Text(texts.lostAndFoundForm),
-            pinned: true,
-            floating: true,
-            snap: true,
-          );
+      title: Text(texts.profile),
+      pinned: true,
+      floating: true,
+      snap: true,
+    );
   }
 }

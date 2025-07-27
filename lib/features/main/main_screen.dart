@@ -8,6 +8,7 @@ import 'package:small_kindness/features/add/presentation/screens/lost_and_found_
 import 'package:small_kindness/features/articles/presentation/screens/articles_screen.dart';
 import 'package:small_kindness/features/pets/presentation/screens/pets_screen.dart';
 import 'package:small_kindness/features/home/presentation/screens/home_screen.dart';
+import 'package:small_kindness/features/profile/presentation/screens/profile_screen.dart';
 
 class MainScreen extends HookWidget {
   const MainScreen({super.key});
@@ -105,7 +106,7 @@ class MainScreen extends HookWidget {
             PetsScreen(),
             LostAndFoundAddScreen(),
             ArticlesScreen(),
-            HomeScreen(),
+            ProfileScreen(),
           ],
         ),
       ),
