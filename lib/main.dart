@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         ),
         navigatorKey: AppRouter.navigatorKey,
         debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        home: MainScreen(index: 0),
       ),
     );
   }
