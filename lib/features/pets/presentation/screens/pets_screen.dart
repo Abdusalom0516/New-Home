@@ -17,7 +17,7 @@ class PetsScreen extends StatelessWidget {
               floating: true,
               snap: true,
             ),
-            ComingSoonWidget(),
+            CustomComingSoonWidget(),
           ],
         ),
       ),

@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:small_kindness/core/consts/const_icons_paths.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
+import 'package:small_kindness/features/add/presentation/screens/lost_and_found_add_screen.dart';
+import 'package:small_kindness/features/articles/presentation/screens/articles_screen.dart';
 import 'package:small_kindness/features/pets/presentation/screens/pets_screen.dart';
 import 'package:small_kindness/features/home/presentation/screens/home_screen.dart';
 
@@ -59,6 +61,14 @@ class MainScreen extends HookWidget {
             ),
             BottomNavigationBarItem(
               icon: Icon(
+                Icons.add_circle_rounded,
+                color: colors.ff16A99F,
+                size: 55.r,
+              ),
+              label: 'Add',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
                 Icons.newspaper_rounded,
                 color: colors.ff000000,
                 size: 25.r,
@@ -90,7 +100,13 @@ class MainScreen extends HookWidget {
         body: PageView(
           controller: pageController,
           physics: NeverScrollableScrollPhysics(),
-          children: [HomeScreen(), PetsScreen(), HomeScreen(), HomeScreen()],
+          children: [
+            HomeScreen(),
+            PetsScreen(),
+            LostAndFoundAddScreen(),
+            ArticlesScreen(),
+            HomeScreen(),
+          ],
         ),
       ),
     );

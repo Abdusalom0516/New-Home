@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
 
-class ArticlesScreen extends StatelessWidget {
-  const ArticlesScreen({super.key});
+class LostAndFoundAddScreen extends StatelessWidget {
+  const LostAndFoundAddScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class ArticlesScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              title: Text(texts.articles),
+              title: Text(texts.lostAndFoundForm),
               pinned: true,
               floating: true,
               snap: true,
