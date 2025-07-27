@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         theme: Theme.of(context).copyWith(
           appBarTheme: AppBarTheme(
+            centerTitle: true,
             iconTheme: IconThemeData(size: 24.w),
             elevation: 2.5.r,
             scrolledUnderElevation: 0,

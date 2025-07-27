@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:small_kindness/core/consts/const_icons_paths.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
+import 'package:small_kindness/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:small_kindness/features/home/presentation/screens/home_screen.dart';
 
 class MainScreen extends HookWidget {
@@ -92,7 +93,12 @@ class MainScreen extends HookWidget {
         body: PageView(
           controller: pageController,
           physics: NeverScrollableScrollPhysics(),
-          children: [HomeScreen(), HomeScreen(), HomeScreen(), HomeScreen()],
+          children: [
+            HomeScreen(),
+            FavoritesScreen(),
+            HomeScreen(),
+            HomeScreen(),
+          ],
         ),
       ),
     );
