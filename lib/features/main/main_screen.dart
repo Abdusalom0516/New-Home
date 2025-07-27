@@ -11,12 +11,13 @@ import 'package:small_kindness/features/home/presentation/screens/home_screen.da
 import 'package:small_kindness/features/profile/presentation/screens/profile_screen.dart';
 
 class MainScreen extends HookWidget {
-  const MainScreen({super.key});
+  const MainScreen({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    final pageController = usePageController(initialPage: 0);
-    final currentIndex = useState(0);
+    final pageController = usePageController(initialPage: index);
+    final currentIndex = useState(index);
     return AppStateWrapper(
       builder: (colors, texts, images) => Scaffold(
         bottomNavigationBar: BottomNavigationBar(

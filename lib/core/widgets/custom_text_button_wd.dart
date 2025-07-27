@@ -32,7 +32,7 @@ class CustomTextButton extends StatelessWidget {
           ),
           child: Text(
             buttonText,
-            style: AppTextStyles.urbanist.regular(
+            style: AppTextStyles.urbanist.medium(
               color: textColor,
               fontSize: 16.sp,
             ),

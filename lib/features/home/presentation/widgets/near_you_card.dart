@@ -5,10 +5,16 @@ import 'package:small_kindness/core/utils/app_network_image.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 
 class NearYouCard extends StatelessWidget {
-  const NearYouCard({super.key, required this.imagesList, required this.index});
+  const NearYouCard({
+    super.key,
+    required this.imagesList,
+    required this.index,
+    this.useMargin,
+  });
 
   final List<String> imagesList;
   final int index;
+  final bool? useMargin;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +24,13 @@ class NearYouCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(9.25.r),
         ),
-        margin: index == 0
-            ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
-            : index == (imagesList.length - 1)
-            ? EdgeInsets.only(right: 16.w, bottom: 10.h)
-            : EdgeInsets.only(right: 15.w, bottom: 10.h),
+        margin: useMargin == true
+            ? index == 0
+                  ? EdgeInsets.only(right: 15.r, left: 16.r, bottom: 10.r)
+                  : index == (imagesList.length - 1)
+                  ? EdgeInsets.only(right: 16.r, bottom: 10.r)
+                  : EdgeInsets.only(right: 15.r, bottom: 10.r)
+            : null,
         child: Container(
           padding: EdgeInsets.all(8.r),
           width: 154.w,
