@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:small_kindness/core/consts/const_texts.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
 
@@ -11,16 +12,21 @@ class PetsScreen extends StatelessWidget {
       builder: (colors, texts, images) => Scaffold(
         body: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              title: Text(texts.pets),
-              pinned: true,
-              floating: true,
-              snap: true,
-            ),
+            // AppBar Section
+            appBarSection(texts),
             CustomComingSoonWidget(),
           ],
         ),
       ),
     );
+  }
+
+  SliverAppBar appBarSection(ConstTexts texts) {
+    return SliverAppBar(
+            title: Text(texts.pets),
+            pinned: true,
+            floating: true,
+            snap: true,
+          );
   }
 }
