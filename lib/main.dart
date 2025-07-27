@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:small_kindness/core/consts/const_colors.dart';
+import 'package:small_kindness/core/consts/const_text_styles.dart';
 import 'package:small_kindness/core/utils/app_router.dart';
 import 'package:small_kindness/features/main/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,6 +31,10 @@ class MyApp extends StatelessWidget {
             elevation: 2.5.r,
             scrolledUnderElevation: 0,
             backgroundColor: ConstColors().ffFFFFFF,
+            titleTextStyle: AppTextStyles.urbanist.semiBold(
+              color: ConstColors().ff000000,
+              fontSize: 22.sp,
+            ),
           ),
           splashColor: Colors.transparent,
           // It remove the unecessary borders
