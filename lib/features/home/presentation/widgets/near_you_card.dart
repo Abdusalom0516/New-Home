@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:small_kindness/core/consts/const_text_styles.dart';
+import 'package:small_kindness/core/utils/app_network_image.dart';
+import 'package:small_kindness/core/utils/app_state_wrapper.dart';
+
+class NearYouCard extends StatelessWidget {
+  const NearYouCard({super.key, required this.imagesList, required this.index});
+
+  final List<String> imagesList;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppStateWrapper(
+      builder: (colors, texts, images) => Card(
+        elevation: 0.5.r,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(9.25.r),
+        ),
+        margin: index == 0
+            ? EdgeInsets.only(right: 15.w, left: 16.w, bottom: 10.h)
+            : index == (imagesList.length - 1)
+            ? EdgeInsets.only(right: 16.w, bottom: 10.h)
+            : EdgeInsets.only(right: 15.w, bottom: 10.h),
+        child: Container(
+          padding: EdgeInsets.all(8.r),
+          width: 154.w,
+          height: 200.h,
+          decoration: BoxDecoration(
+            color: colors.ffFFFFFF,
+            borderRadius: BorderRadius.circular(9.25.r),
+            border: Border.all(color: colors.ffE3E3E3, width: 1.w),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 2.5.r,
+            children: [
+              Expanded(
+                flex: 6,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.25.r),
+                  child: AppNetworkImage(
+                    height: 116.h,
+                    width: double.infinity,
+                    imageUrl: imagesList[index],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      "Jodo",
+                      style: AppTextStyles.urbanist.bold(
+                        color: colors.ff000000,
+                        fontSize: 17.sp,
+                      ),
+                    ),
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      "Golden Retriever",
+                      style: AppTextStyles.urbanist.regular(
+                        color: colors.ff000000,
+                        fontSize: 15.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
