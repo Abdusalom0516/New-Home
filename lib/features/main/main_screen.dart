@@ -64,6 +64,11 @@ class MainScreen extends HookWidget {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.add_circle_rounded,
+                color: colors.ff000000,
+                size: 55.r,
+              ),
+              activeIcon: Icon(
+                Icons.add_circle_rounded,
                 color: colors.ff16A99F,
                 size: 55.r,
               ),
