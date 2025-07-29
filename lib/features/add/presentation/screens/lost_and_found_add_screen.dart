@@ -141,27 +141,30 @@ class CheckboxRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppStateWrapper(
-      builder: (colors, texts, images) => InkWell(
-        onTap: func,
-        child: Row(
-          children: [
-            IgnorePointer(
-              ignoring: true,
-              child: Checkbox.adaptive(
-                value: notifier.value,
-                activeColor: colors.ff000000,
-                onChanged: (value) {},
+    return Transform.translate(
+      offset: Offset(-12.r, 0),
+      child: AppStateWrapper(
+        builder: (colors, texts, images) => InkWell(
+          onTap: func,
+          child: Row(
+            children: [
+              IgnorePointer(
+                ignoring: true,
+                child: Checkbox.adaptive(
+                  value: notifier.value,
+                  activeColor: colors.ff000000,
+                  onChanged: (value) {},
+                ),
               ),
-            ),
-            Text(
-              title,
-              style: AppTextStyles.urbanist.medium(
-                color: colors.ff000000,
-                fontSize: 16.sp,
+              Text(
+                title,
+                style: AppTextStyles.urbanist.medium(
+                  color: colors.ff000000,
+                  fontSize: 16.sp,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
