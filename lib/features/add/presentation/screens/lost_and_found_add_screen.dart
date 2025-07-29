@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:small_kindness/core/consts/const_img_paths.dart';
+import 'package:small_kindness/core/consts/const_text_styles.dart';
 import 'package:small_kindness/core/consts/const_texts.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
 import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
@@ -13,34 +15,63 @@ class LostAndFoundAddScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentIndex = useState(0);
+    final isDog = useState(true);
+    final isCat = useState(false);
+    final isOtherPet = useState(false);
     return AppStateWrapper(
       builder: (colors, texts, images) => Scaffold(
         body: CustomScrollView(
           slivers: [
             // AppBar Section
             appBarSection(texts),
-            SliverHeight(height: 5),
+            SliverHeight(height: 15),
+            // Found Or Lost Choosing Section
+            foundOrLostChoosingSection(texts, images, currentIndex),
+            SliverHeight(height: 15),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
-                child: Row(
-                  spacing: 13.w,
+                child: Text(
+                  texts.typeOfPet,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Column(
                   children: [
-                    LostOrFoundCard(
-                      title: texts.found,
-                      image: images.found,
-                      isChosen: currentIndex.value == 0,
+                    CheckboxRow(
+                      notifier: isDog,
                       func: () {
-                        currentIndex.value = 0;
+                        isCat.value = false;
+                        isOtherPet.value = false;
+                        isDog.value = true;
                       },
+                      title: texts.dog,
                     ),
-                    LostOrFoundCard(
-                      title: texts.lost,
-                      image: images.lost,
-                      isChosen: currentIndex.value == 1,
+                    CheckboxRow(
+                      notifier: isCat,
                       func: () {
-                        currentIndex.value = 1;
+                        isDog.value = false;
+                        isOtherPet.value = false;
+                        isCat.value = true;
                       },
+                      title: texts.cat,
+                    ),
+                    CheckboxRow(
+                      notifier: isOtherPet,
+                      func: () {
+                        isDog.value = false;
+                        isCat.value = false;
+                        isOtherPet.value = true;
+                      },
+                      title: texts.other,
                     ),
                   ],
                 ),
@@ -53,12 +84,86 @@ class LostAndFoundAddScreen extends HookWidget {
     );
   }
 
+  SliverPadding foundOrLostChoosingSection(
+    ConstTexts texts,
+    ConstImgPaths images,
+    ValueNotifier<int> currentIndex,
+  ) {
+    return SliverPadding(
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+      sliver: SliverToBoxAdapter(
+        child: Row(
+          spacing: 13.w,
+          children: [
+            LostOrFoundCard(
+              title: texts.found,
+              image: images.found,
+              isChosen: currentIndex.value == 0,
+              func: () {
+                currentIndex.value = 0;
+              },
+            ),
+            LostOrFoundCard(
+              title: texts.lost,
+              image: images.lost,
+              isChosen: currentIndex.value == 1,
+              func: () {
+                currentIndex.value = 1;
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   SliverAppBar appBarSection(ConstTexts texts) {
     return SliverAppBar(
       title: Text(texts.lostAndFoundForm),
       pinned: true,
       floating: true,
       snap: true,
+    );
+  }
+}
+
+class CheckboxRow extends StatelessWidget {
+  const CheckboxRow({
+    super.key,
+    required this.func,
+    required this.title,
+    required this.notifier,
+  });
+
+  final VoidCallback func;
+  final String title;
+  final ValueNotifier<bool> notifier;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppStateWrapper(
+      builder: (colors, texts, images) => InkWell(
+        onTap: func,
+        child: Row(
+          children: [
+            IgnorePointer(
+              ignoring: true,
+              child: Checkbox.adaptive(
+                value: notifier.value,
+                activeColor: colors.ff000000,
+                onChanged: (value) {},
+              ),
+            ),
+            Text(
+              title,
+              style: AppTextStyles.urbanist.medium(
+                color: colors.ff000000,
+                fontSize: 16.sp,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
