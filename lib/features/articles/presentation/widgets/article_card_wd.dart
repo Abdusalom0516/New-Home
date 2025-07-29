@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:small_kindness/core/consts/const_text_styles.dart';
+import 'package:small_kindness/core/utils/app_router.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
+import 'package:small_kindness/features/articles/presentation/screens/full_article_screen.dart';
 
 class ArticleCard extends StatelessWidget {
   const ArticleCard({super.key});
@@ -13,6 +15,7 @@ class ArticleCard extends StatelessWidget {
       builder: (colors, texts, images) => InkWell(
         onTap: () {
           log("Article Card Clicked.");
+          AppRouter.go(FullArticleScreen());
         },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10.r, vertical: 19.r),

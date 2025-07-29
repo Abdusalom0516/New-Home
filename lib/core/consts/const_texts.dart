@@ -64,5 +64,5 @@ class ConstTexts {
   String about = "About Us";
   String pets = "Pets";
   String comingSoon = "Coming Soon!";
-
+  String article = "Article";
 }
