@@ -98,11 +98,11 @@ class PetsScreen extends HookWidget {
       floating: true,
       snap: true,
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(78.h),
+        preferredSize: Size.fromHeight(65.h),
         child: Container(
-          margin: EdgeInsets.all(16.r),
+          margin: EdgeInsets.fromLTRB(16.r, 0, 16.r, 16.r),
           decoration: BoxDecoration(
-            color: colors.ffE8F7F6,
+            color: colors.ffF6F6F6,
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
