@@ -83,52 +83,52 @@ class HomeScreen extends StatelessWidget {
 
   SliverToBoxAdapter exploreWaysToHelpSection(ConstColors colors) {
     return SliverToBoxAdapter(
-            child: SizedBox(
-              height: 195.h,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 6,
-                itemBuilder: (context, index) => Container(
-                  margin: index == 0
-                      ? EdgeInsets.only(right: 15.r, left: 16.r, bottom: 10.r)
-                      : index == 5
-                      ? EdgeInsets.only(right: 16.r, bottom: 10.r)
-                      : EdgeInsets.only(right: 15.r, bottom: 10.r),
-                  height: 195.h,
-                  width: 234.w,
-                  decoration: BoxDecoration(
-                    color: colors.ffFFFFFF,
-                    borderRadius: BorderRadius.circular(9.25.r),
-                  ),
-                  child: Column(
-                    spacing: 5.5.h,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5.25.r),
-                          child: AppNetworkImage(
-                            height: 116.h,
-                            width: double.infinity,
-                            imageUrl:
-                                "https://i.pinimg.com/1200x/29/3d/32/293d32bf6faeec6bf8718eb647a0d59a.jpg",
-                          ),
-                        ),
-                      ),
-                      Text(
-                        overflow: TextOverflow.ellipsis,
-                        "Volunteers",
-                        style: AppTextStyles.urbanist.regular(
-                          color: colors.ff000000,
-                          fontSize: 17.sp,
-                        ),
-                      ),
-                    ],
+      child: SizedBox(
+        height: 195.h,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 6,
+          itemBuilder: (context, index) => Container(
+            margin: index == 0
+                ? EdgeInsets.only(right: 15.r, left: 16.r, bottom: 10.r)
+                : index == 5
+                ? EdgeInsets.only(right: 16.r, bottom: 10.r)
+                : EdgeInsets.only(right: 15.r, bottom: 10.r),
+            height: 195.h,
+            width: 234.w,
+            decoration: BoxDecoration(
+              color: colors.ffFFFFFF,
+              borderRadius: BorderRadius.circular(9.25.r),
+            ),
+            child: Column(
+              spacing: 5.5.h,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5.25.r),
+                    child: AppNetworkImage(
+                      height: 116.h,
+                      width: double.infinity,
+                      imageUrl:
+                          "https://i.pinimg.com/1200x/29/3d/32/293d32bf6faeec6bf8718eb647a0d59a.jpg",
+                    ),
                   ),
                 ),
-              ),
+                Text(
+                  overflow: TextOverflow.ellipsis,
+                  "Volunteers",
+                  style: AppTextStyles.urbanist.regular(
+                    color: colors.ff000000,
+                    fontSize: 17.sp,
+                  ),
+                ),
+              ],
             ),
-          );
+          ),
+        ),
+      ),
+    );
   }
 
   SliverToBoxAdapter nearYouCardsSection(ConstColors colors) {
@@ -214,7 +214,7 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(8.r),
               decoration: BoxDecoration(
-                color: colors.ffE8F7F6,
+                color: colors.ffF6F6F6,
                 borderRadius: BorderRadius.circular(5.25.r),
               ),
               child: Row(
@@ -226,7 +226,7 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.all(9.r),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.25.r),
-                      color: colors.ff16A99F,
+                      color: colors.ff000000.withValues(alpha: 0.7),
                     ),
                     child: SvgPicture.asset(
                       ConstIconsPaths.article,
@@ -311,7 +311,7 @@ class HomeScreen extends StatelessWidget {
           width: 45.w,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: colors.ffE8F7F6,
+            color: colors.ffF6F6F6,
           ),
           child: Icon(
             Icons.notifications_outlined,

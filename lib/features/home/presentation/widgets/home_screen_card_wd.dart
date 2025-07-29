@@ -21,7 +21,7 @@ class HomeScreenCard extends StatelessWidget {
           height: 152.h,
           padding: EdgeInsets.all(8.r),
           decoration: BoxDecoration(
-            color: colors.ffE8F7F6,
+            color: colors.ffF6F6F6,
             borderRadius: BorderRadius.circular(5.25.r),
           ),
           child: Column(
@@ -34,7 +34,7 @@ class HomeScreenCard extends StatelessWidget {
                 padding: EdgeInsets.all(9.r),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.25.r),
-                  color: colors.ff16A99F,
+                  color: colors.ff000000.withValues(alpha: 0.7),
                 ),
                 child: SvgPicture.asset(
                   iconPath,
