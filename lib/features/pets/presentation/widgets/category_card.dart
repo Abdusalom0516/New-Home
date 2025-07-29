@@ -24,14 +24,16 @@ class CategoryCard extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 9.r),
             decoration: BoxDecoration(
-              color: !isSelected ? colors.transparent : colors.ff16A99F,
+              color: !isSelected
+                  ? colors.transparent
+                  : colors.ff000000.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(8.r),
             ),
             child: Center(
               child: Text(
                 categoryName,
                 style: AppTextStyles.urbanist.semiBold(
-                  color: !isSelected ? colors.ff16A99F : colors.ffFFFFFF,
+                  color: !isSelected ? colors.ff000000 : colors.ffFFFFFF,
                   fontSize: 16.sp,
                 ),
               ),

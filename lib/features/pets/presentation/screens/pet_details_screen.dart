@@ -103,7 +103,7 @@ class PetDetailsScreen extends HookWidget {
                     width: 47.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: colors.ffE8F7F6,
+                      color: colors.ffF6F6F6,
                     ),
                     child: Icon(
                       Icons.person_rounded,
@@ -208,7 +208,7 @@ class PetDetailsScreen extends HookWidget {
             controller: imageController,
             count: 5,
             effect: ExpandingDotsEffect(
-              activeDotColor: colors.ff16A99F,
+              activeDotColor: colors.ff000000,
               dotWidth: 9.w,
               dotHeight: 9.h,
               dotColor: colors.ffE3E3E3,
@@ -268,7 +268,7 @@ class PetDetailsCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 11.r),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            color: colors.ffE8F7F6,
+            color: colors.ffF6F6F6,
           ),
           child: Column(
             spacing: 5.h,

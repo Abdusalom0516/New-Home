@@ -26,7 +26,7 @@ class MainScreen extends HookWidget {
             pageController.jumpToPage(value);
           },
           currentIndex: currentIndex.value,
-          backgroundColor: colors.ffE8F7F6,
+          backgroundColor: colors.ffF6F6F6,
           showUnselectedLabels: false,
           showSelectedLabels: false,
           type: BottomNavigationBarType.fixed,
