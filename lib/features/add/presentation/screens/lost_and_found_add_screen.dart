@@ -18,6 +18,8 @@ class LostAndFoundAddScreen extends HookWidget {
     final isDog = useState(true);
     final isCat = useState(false);
     final isOtherPet = useState(false);
+    final nameController = useTextEditingController();
+    final descriptionController = useTextEditingController();
     return AppStateWrapper(
       builder: (colors, texts, images) => Scaffold(
         body: CustomScrollView(
@@ -74,6 +76,95 @@ class LostAndFoundAddScreen extends HookWidget {
                       title: texts.other,
                     ),
                   ],
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  texts.name,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: TextField(
+                  controller: nameController,
+                  style: AppTextStyles.urbanist.medium(
+                    color: colors.ff848484,
+                    fontSize: 14.sp,
+                  ),
+                  cursorColor: colors.ff000000,
+                  decoration: InputDecoration(
+                    hint: Text(
+                      "Enter pet name... (e.g. Dexter)",
+                      style: AppTextStyles.urbanist.medium(
+                        color: colors.ff848484,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  texts.description,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: TextField(
+                  maxLines: 4,
+                  controller: descriptionController,
+                  style: AppTextStyles.urbanist.medium(
+                    color: colors.ff848484,
+                    fontSize: 14.sp,
+                  ),
+                  cursorColor: colors.ff000000,
+                  decoration: InputDecoration(
+                    hint: Text(
+                      "Please describe your lost pet (e.g., breed, color, size, distinctive markings)",
+                      style: AppTextStyles.urbanist.medium(
+                        color: colors.ff848484,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                  ),
                 ),
               ),
             ),
