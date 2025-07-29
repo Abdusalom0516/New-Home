@@ -5,8 +5,8 @@ import 'package:small_kindness/core/consts/const_img_paths.dart';
 import 'package:small_kindness/core/consts/const_text_styles.dart';
 import 'package:small_kindness/core/consts/const_texts.dart';
 import 'package:small_kindness/core/utils/app_state_wrapper.dart';
-import 'package:small_kindness/core/widgets/custom_coming_soon_wd.dart';
 import 'package:small_kindness/core/widgets/custom_sliver_height_wd.dart';
+import 'package:small_kindness/core/widgets/custom_text_button_wd.dart';
 import 'package:small_kindness/features/add/presentation/widgets/lost_or_found_card_wd.dart';
 
 class LostAndFoundAddScreen extends HookWidget {
@@ -20,8 +20,25 @@ class LostAndFoundAddScreen extends HookWidget {
     final isOtherPet = useState(false);
     final nameController = useTextEditingController();
     final descriptionController = useTextEditingController();
+    final contacController = useTextEditingController();
     return AppStateWrapper(
       builder: (colors, texts, images) => Scaffold(
+        bottomNavigationBar: Container(
+          padding: EdgeInsets.fromLTRB(16.r, 0, 16.r, 22.r),
+
+          child: Row(
+            children: [
+              Expanded(
+                child: CustomTextButton(
+                  buttonText: texts.submit,
+                  textColor: colors.ffFFFFFF,
+                  backgroundColor: colors.ff000000,
+                  func: () {},
+                ),
+              ),
+            ],
+          ),
+        ),
         body: CustomScrollView(
           slivers: [
             // AppBar Section
@@ -168,7 +185,143 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            CustomComingSoonWidget(),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  texts.dateAndTime,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: TextField(
+                  controller: nameController,
+                  style: AppTextStyles.urbanist.medium(
+                    color: colors.ff848484,
+                    fontSize: 14.sp,
+                  ),
+                  cursorColor: colors.ff000000,
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.calendar_month_rounded,
+                      color: colors.ff000000,
+                      size: 21.r,
+                    ),
+                    hint: Text(
+                      texts.dateAndTimeHint,
+                      style: AppTextStyles.urbanist.medium(
+                        color: colors.ff848484,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  texts.contactInfo,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: TextField(
+                  controller: contacController,
+                  style: AppTextStyles.urbanist.medium(
+                    color: colors.ff848484,
+                    fontSize: 14.sp,
+                  ),
+                  cursorColor: colors.ff000000,
+                  decoration: InputDecoration(
+                    hint: Text(
+                      texts.yourPhoneNumber,
+                      style: AppTextStyles.urbanist.medium(
+                        color: colors.ff848484,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
+                  texts.uploadPhoto,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 74.r,
+                        width: 74.r,
+                        decoration: BoxDecoration(
+                          color: colors.ffF6F6F6,
+                          borderRadius: BorderRadius.circular(8.r),
+                          border: Border.all(
+                            color: colors.ff848484,
+                            width: 0.9.r,
+                          ),
+                        ),
+                        child: Icon(
+                          Icons.add_rounded,
+                          size: 24.r,
+                          color: colors.ff000000,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverHeight(height: 35),
           ],
         ),
       ),

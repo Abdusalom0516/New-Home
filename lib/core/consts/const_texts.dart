@@ -20,7 +20,7 @@ class ConstTexts {
   String dog = "Dog";
   String cat = "Cat";
   String other = "Other (e.g., rabbit, bird)";
-  String description = "Description";
+  String description = "Description*";
   String descriptionHint =
       "Please describe your lost pet (e.g., breed, color, size, distinctive markings)";
   String dateAndTime = "Date & Time";
@@ -49,7 +49,7 @@ class ConstTexts {
   String doNothaveAcc = "you don’t have any account?";
   String signUpNow = "sign up now";
   String accountSetUp = "Account Setup!";
-  String name = "Name";
+  String name = "Name*";
   String nameHint = "What’s your full name";
   String emailHint = "What’s your email address";
   String passwordHint = "Create a password for your account";
@@ -65,4 +65,5 @@ class ConstTexts {
   String pets = "Pets";
   String comingSoon = "Coming Soon!";
   String article = "Article";
+  String yourPhoneNumber = "Your Phone Number";
 }
