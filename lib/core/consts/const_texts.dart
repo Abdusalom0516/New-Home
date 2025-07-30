@@ -23,9 +23,9 @@ class ConstTexts {
   String description = "Description*";
   String descriptionHint =
       "Please describe your lost pet (e.g., breed, color, size, distinctive markings)";
-  String dateAndTime = "Date & Time";
+  String dateAndTime = "Date & Time*";
   String dateAndTimeHint = "What’s the date & time when you found the pet?";
-  String location = "Location";
+  String location = "Location*";
   String locationHint = "Where did you find the pet?";
   String contactInfo = "Contact Info*";
   String contactInfoHint = "Your Phone Number";

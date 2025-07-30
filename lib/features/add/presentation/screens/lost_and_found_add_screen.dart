@@ -59,7 +59,7 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 15),
+            SliverHeight(height: 10),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
@@ -109,7 +109,7 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 15),
+            SliverHeight(height: 10),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
@@ -153,7 +153,7 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 15),
+            SliverHeight(height: 10),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
@@ -198,7 +198,7 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 15),
+            SliverHeight(height: 10),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
@@ -239,6 +239,50 @@ class LostAndFoundAddScreen extends HookWidget {
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
                 child: Text(
+                  texts.location,
+                  style: AppTextStyles.urbanist.semiBold(
+                    color: colors.ff000000,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 10),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: TextField(
+                  controller: nameController,
+                  style: AppTextStyles.urbanist.medium(
+                    color: colors.ff848484,
+                    fontSize: 14.sp,
+                  ),
+                  cursorColor: colors.ff000000,
+                  decoration: InputDecoration(
+                    hint: Text(
+                      texts.locationHint,
+                      style: AppTextStyles.urbanist.medium(
+                        color: colors.ff848484,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: colors.ff848484),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SliverHeight(height: 15),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
+              sliver: SliverToBoxAdapter(
+                child: Text(
                   texts.contactInfo,
                   style: AppTextStyles.urbanist.semiBold(
                     color: colors.ff000000,
@@ -247,7 +291,8 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 15),
+
+            SliverHeight(height: 10),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
@@ -278,6 +323,7 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
+
             SliverHeight(height: 15),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
@@ -291,7 +337,7 @@ class LostAndFoundAddScreen extends HookWidget {
                 ),
               ),
             ),
-            SliverHeight(height: 15),
+            SliverHeight(height: 10),
             SliverPadding(
               padding: EdgeInsetsGeometry.symmetric(horizontal: 16.r),
               sliver: SliverToBoxAdapter(
